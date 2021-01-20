@@ -5,11 +5,29 @@ class _PostsApi {
 
   _PostsApi(this._api);
 
-  Future<List<GhostPost>> browse({int limit = 25, String include}) async {
+  /// [formats] can be 'html' and 'plaintext'
+  /// [include] can be 'authors' and 'tags'
+  Future<List<GhostPost>> browse({
+    int page,
+    int limit,
+    String order,
+    List<String> include,
+    List<String> fields,
+    List<String> formats,
+    List<String> filters,
+  }) async {
     throw UnimplementedError();
   }
 
-  Future<GhostPost> read({String id, String slug, List<String> formats}) async {
+  /// [formats] can be 'html' and 'plaintext'
+  /// [include] can be 'authors' and 'tags'
+  Future<GhostPost> read({
+    String id,
+    String slug,
+    List<String> formats,
+    List<String> include,
+    List<String> fields,
+  }) async {
     throw UnimplementedError();
   }
 }
