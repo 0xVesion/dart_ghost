@@ -7,7 +7,7 @@ class _PagesApi {
 
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
-  Future<List<GhostPage>> browse({
+  Future<List<GhostPost>> browse({
     int page,
     int limit,
     String order,
@@ -21,7 +21,7 @@ class _PagesApi {
 
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
-  Future<GhostPage> read({
+  Future<GhostPost> read({
     String id,
     String slug,
     List<String> include,
@@ -31,5 +31,3 @@ class _PagesApi {
     throw UnimplementedError();
   }
 }
-
-class GhostPage {}
