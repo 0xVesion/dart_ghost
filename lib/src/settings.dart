@@ -64,7 +64,7 @@ class GhostSettings {
   });
 
   factory GhostSettings.fromJson(Map<String, dynamic> json) => GhostSettings(
-        title: json['itle'],
+        title: json['title'],
         description: json['description'],
         logo: json['logo'],
         icon: json['icon'],

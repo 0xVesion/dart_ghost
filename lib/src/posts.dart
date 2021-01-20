@@ -100,7 +100,7 @@ class GhostPost {
   });
 
   factory GhostPost.fromJson(Map<String, dynamic> json) => GhostPost(
-        slug: json['lug'],
+        slug: json['slug'],
         id: json['id'],
         uuid: json['uuid'],
         title: json['title'],

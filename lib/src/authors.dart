@@ -60,7 +60,7 @@ class GhostAuthor {
   });
 
   factory GhostAuthor.fromJson(Map<String, dynamic> json) => GhostAuthor(
-        slug: json['lug'],
+        slug: json['slug'],
         id: json['id'],
         name: json['name'],
         profileImage: json['profile_image'],
