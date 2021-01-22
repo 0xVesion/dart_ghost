@@ -5,8 +5,10 @@ class _SettingsApi {
 
   _SettingsApi(this._api);
 
-  Future<GhostSettings> browse() {
-    throw UnimplementedError();
+  Future<GhostSettings> browse() async {
+    final json = await _api.send('/settings');
+
+    return GhostSettings.fromJson(json['settings'] as Map<String, dynamic>);
   }
 }
 
@@ -78,8 +80,8 @@ class GhostSettings {
         codeinjectionFoot: json['codeinjection_foot'],
         navigation: List<GhostNavigationItem>.from(
             json['navigation'].map((x) => GhostNavigationItem.fromJson(x))),
-        secondaryNavigation:
-            List<dynamic>.from(json['secondary_navigation'].map((x) => x)),
+        secondaryNavigation: List<GhostNavigationItem>.from(
+            json['navigation'].map((x) => GhostNavigationItem.fromJson(x))),
         metaTitle: json['meta_title'],
         metaDescription: json['meta_description'],
         ogImage: json['og_image'],
