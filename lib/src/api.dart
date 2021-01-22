@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
 part 'authors.dart';
 part 'pages.dart';
 part 'posts.dart';
@@ -11,7 +15,25 @@ class GhostContentAPI {
   final String key;
   final String version;
 
-  GhostContentAPI({this.url, this.key, this.version});
+  GhostContentAPI({this.url, this.key, this.version = 'v2'});
+
+  Future<Map<String, dynamic>> send(
+    String path, [
+    Map<String, String> params,
+  ]) async {
+    params ??= {};
+    params['key'] = key;
+
+    final paramsString =
+        params.entries.map((e) => '${e.key}=${e.value}').join('&');
+
+    final uri =
+        Uri.parse('${url}/ghost/api/${version}/content${path}?$paramsString');
+
+    final response = await http.get(uri);
+
+    return jsonDecode(response.body);
+  }
 
   _PostsApi get posts => _PostsApi(this);
 
