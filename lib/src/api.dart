@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:json_annotation/json_annotation.dart';
 
+part 'api.g.dart';
 part 'authors.dart';
 part 'pages.dart';
 part 'posts.dart';

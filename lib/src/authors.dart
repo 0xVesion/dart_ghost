@@ -28,6 +28,7 @@ class _AuthorsApi {
   }
 }
 
+@JsonSerializable()
 class GhostAuthor {
   final String slug;
   final String id;
@@ -59,35 +60,8 @@ class GhostAuthor {
     this.url,
   });
 
-  factory GhostAuthor.fromJson(Map<String, dynamic> json) => GhostAuthor(
-        slug: json['slug'],
-        id: json['id'],
-        name: json['name'],
-        profileImage: json['profile_image'],
-        coverImage: json['cover_image'],
-        bio: json['bio'],
-        website: json['website'],
-        location: json['location'],
-        facebook: json['facebook'],
-        twitter: json['twitter'],
-        metaTitle: json['meta_title'],
-        metaDescription: json['meta_description'],
-        url: json['url'],
-      );
+  factory GhostAuthor.fromJson(Map<String, dynamic> json) =>
+      _$GhostAuthorFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'slug': slug,
-        'id': id,
-        'name': name,
-        'profile_image': profileImage,
-        'cover_image': coverImage,
-        'bio': bio,
-        'website': website,
-        'location': location,
-        'facebook': facebook,
-        'twitter': twitter,
-        'meta_title': metaTitle,
-        'meta_description': metaDescription,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => _$GhostAuthorToJson(this);
 }

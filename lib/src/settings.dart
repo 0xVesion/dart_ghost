@@ -12,6 +12,7 @@ class _SettingsApi {
   }
 }
 
+@JsonSerializable()
 class GhostSettings {
   final String title;
   final String description;
@@ -65,64 +66,13 @@ class GhostSettings {
     this.url,
   });
 
-  factory GhostSettings.fromJson(Map<String, dynamic> json) => GhostSettings(
-        title: json['title'],
-        description: json['description'],
-        logo: json['logo'],
-        icon: json['icon'],
-        accentColor: json['accent_color'],
-        coverImage: json['cover_image'],
-        facebook: json['facebook'],
-        twitter: json['twitter'],
-        lang: json['lang'],
-        timezone: json['timezone'],
-        codeinjectionHead: json['codeinjection_head'],
-        codeinjectionFoot: json['codeinjection_foot'],
-        navigation: List<GhostNavigationItem>.from(
-            json['navigation'].map((x) => GhostNavigationItem.fromJson(x))),
-        secondaryNavigation: List<GhostNavigationItem>.from(
-            json['navigation'].map((x) => GhostNavigationItem.fromJson(x))),
-        metaTitle: json['meta_title'],
-        metaDescription: json['meta_description'],
-        ogImage: json['og_image'],
-        ogTitle: json['og_title'],
-        ogDescription: json['og_description'],
-        twitterImage: json['twitter_image'],
-        twitterTitle: json['twitter_title'],
-        twitterDescription: json['twitter_description'],
-        membersSupportAddress: json['members_support_address'],
-        url: json['url'],
-      );
+  factory GhostSettings.fromJson(Map<String, dynamic> json) =>
+      _$GhostSettingsFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'title': title,
-        'description': description,
-        'logo': logo,
-        'icon': icon,
-        'accent_color': accentColor,
-        'cover_image': coverImage,
-        'facebook': facebook,
-        'twitter': twitter,
-        'lang': lang,
-        'timezone': timezone,
-        'codeinjection_head': codeinjectionHead,
-        'codeinjection_foot': codeinjectionFoot,
-        'navigation': List<dynamic>.from(navigation.map((x) => x.toJson())),
-        'secondary_navigation':
-            List<dynamic>.from(secondaryNavigation.map((x) => x)),
-        'meta_title': metaTitle,
-        'meta_description': metaDescription,
-        'og_image': ogImage,
-        'og_title': ogTitle,
-        'og_description': ogDescription,
-        'twitter_image': twitterImage,
-        'twitter_title': twitterTitle,
-        'twitter_description': twitterDescription,
-        'members_support_address': membersSupportAddress,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => _$GhostSettingsToJson(this);
 }
 
+@JsonSerializable()
 class GhostNavigationItem {
   GhostNavigationItem({
     this.label,
@@ -133,13 +83,7 @@ class GhostNavigationItem {
   final String url;
 
   factory GhostNavigationItem.fromJson(Map<String, dynamic> json) =>
-      GhostNavigationItem(
-        label: json['label'],
-        url: json['url'],
-      );
+      _$GhostNavigationItemFromJson(json);
 
-  Map<String, dynamic> toJson() => {
-        'label': label,
-        'url': url,
-      };
+  Map<String, dynamic> toJson() => _$GhostNavigationItemToJson(this);
 }
