@@ -16,7 +16,17 @@ class _PostsApi {
     List<String> formats,
     List<String> filters,
   }) async {
-    throw UnimplementedError();
+    final json = await _api.send('/posts', {
+      'page': page,
+      'limit': limit,
+      'order': order,
+      'include': include,
+      'fields': fields,
+      'formats': formats,
+      'filters': filters,
+    });
+
+    return _map(json, 'posts', (e) => GhostPost.fromJson(e));
   }
 
   /// [formats] can be 'html' and 'plaintext'
@@ -28,7 +38,13 @@ class _PostsApi {
     List<String> include,
     List<String> fields,
   }) async {
-    throw UnimplementedError();
+    final json = await _api.send('/posts/${_idOrSlugPath(id, slug)}', {
+      'formats': formats,
+      'include': include,
+      'fields': fields,
+    });
+
+    return _map(json, 'posts', (e) => GhostPost.fromJson(e)).first;
   }
 }
 
