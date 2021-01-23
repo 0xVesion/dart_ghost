@@ -13,8 +13,17 @@ class _TagsApi {
     List<String> include,
     List<String> fields,
     List<String> filters,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final json = await _api.send('/tags', {
+      'page': page,
+      'limit': limit,
+      'order': order,
+      'include': include,
+      'fields': fields,
+      'filters': filters,
+    });
+
+    return _map(json, 'tags', (e) => GhostTag.fromJson(e));
   }
 
   /// [include] can be 'count.post'
@@ -23,8 +32,13 @@ class _TagsApi {
     String slug,
     List<String> include,
     List<String> fields,
-  }) {
-    throw UnimplementedError();
+  }) async {
+    final json = await _api.send('/tags/${_idOrSlugPath(id, slug)}', {
+      'include': include,
+      'fields': fields,
+    });
+
+    return _map(json, 'tags', (e) => GhostTag.fromJson(e)).first;
   }
 }
 
