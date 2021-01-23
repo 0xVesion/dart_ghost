@@ -14,7 +14,16 @@ class _AuthorsApi {
     List<String> fields,
     List<String> filters,
   }) async {
-    throw UnimplementedError();
+    final json = await _api.send('/authors', {
+      'page': page,
+      'limit': limit,
+      'order': order,
+      'include': include,
+      'fields': fields,
+      'filters': filters,
+    });
+
+    return _map(json, 'authors', (e) => GhostAuthor.fromJson(e));
   }
 
   /// [include] can be 'count.post'
@@ -24,7 +33,12 @@ class _AuthorsApi {
     List<String> include,
     List<String> fields,
   }) async {
-    throw UnimplementedError();
+    final json = await _api.send('/authors/${_idOrSlugPath(id, slug)}', {
+      'include': include,
+      'fields': fields,
+    });
+
+    return _map(json, 'authors', (e) => GhostAuthor.fromJson(e)).first;
   }
 }
 
