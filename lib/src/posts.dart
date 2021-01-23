@@ -39,6 +39,7 @@ class GhostPost {
   final String uuid;
   final String title;
   final String html;
+  final String plaintext;
   final String commentId;
   final String featureImage;
   final bool featured;
@@ -72,6 +73,7 @@ class GhostPost {
     this.uuid,
     this.title,
     this.html,
+    this.plaintext,
     this.commentId,
     this.featureImage,
     this.featured,

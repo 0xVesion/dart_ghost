@@ -38,6 +38,10 @@ class GhostSettings {
   final String twitterDescription;
   final String membersSupportAddress;
   final String url;
+  final String ghostHead;
+  final String ghostFoot;
+  final String activeTimezone;
+  final String defaultLocale;
 
   GhostSettings({
     this.title,
@@ -64,6 +68,10 @@ class GhostSettings {
     this.twitterDescription,
     this.membersSupportAddress,
     this.url,
+    this.ghostHead,
+    this.ghostFoot,
+    this.activeTimezone,
+    this.defaultLocale,
   });
 
   factory GhostSettings.fromJson(Map<String, dynamic> json) =>
