@@ -14,7 +14,7 @@ class _AuthorsApi {
     List<String> fields,
     List<String> filters,
   }) async {
-    final json = await _api.send('/authors', {
+    final json = await _api.send('/authors', <String, dynamic>{
       'page': page,
       'limit': limit,
       'order': order,
@@ -33,7 +33,7 @@ class _AuthorsApi {
     List<String> include,
     List<String> fields,
   }) async {
-    final json = await _api.send('/authors/${_idOrSlugPath(id, slug)}', {
+    final json = await _api.send('/authors/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'include': include,
       'fields': fields,
     });
@@ -74,8 +74,7 @@ class GhostAuthor {
     this.url,
   });
 
-  factory GhostAuthor.fromJson(Map<String, dynamic> json) =>
-      _$GhostAuthorFromJson(json);
+  factory GhostAuthor.fromJson(Map<String, dynamic> json) => _$GhostAuthorFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostAuthorToJson(this);
 }

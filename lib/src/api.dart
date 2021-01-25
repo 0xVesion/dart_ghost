@@ -21,11 +21,11 @@ class GhostContentAPI {
     String path, [
     Map<String, dynamic> params,
   ]) async {
-    params ??= {};
+    params ??= <String, dynamic>{};
     params['key'] = key;
 
     final valueToString = (dynamic value) {
-      if (value is List) return value.map((e) => '$e').join(',');
+      if (value is List) return value.map((dynamic e) => '$e').join(',');
 
       return '$value';
     };
@@ -41,7 +41,7 @@ class GhostContentAPI {
 
     if (response.statusCode != 200) throw Exception(response.body);
 
-    return jsonDecode(response.body);
+    return jsonDecode(response.body) as Map<String, dynamic>;
   }
 
   _PostsApi get posts => _PostsApi(this);
@@ -60,10 +60,7 @@ List<T> _map<T>(
   String name,
   T Function(Map<String, dynamic>) map,
 ) =>
-    (json[name] as List<dynamic>)
-        .cast<Map<String, dynamic>>()
-        .map(map)
-        .toList();
+    (json[name] as List<dynamic>).cast<Map<String, dynamic>>().map(map).toList();
 
 String _idOrSlugPath(String id, String slug) {
   if (id != null && slug != null) throw Error();

@@ -16,7 +16,7 @@ class _PagesApi {
     List<String> formats,
     List<String> filters,
   }) async {
-    final json = await _api.send('/pages', {
+    final json = await _api.send('/pages', <String, dynamic>{
       'page': page,
       'limit': limit,
       'order': order,
@@ -38,7 +38,7 @@ class _PagesApi {
     List<String> fields,
     List<String> formats,
   }) async {
-    final json = await _api.send('/pages/${_idOrSlugPath(id, slug)}', {
+    final json = await _api.send('/pages/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'include': include,
       'fields': fields,
       'formats': formats,
