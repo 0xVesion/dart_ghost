@@ -7,5 +7,3 @@ build/
 
 # Directory created by dartdoc
 doc/api/
-# Generated files
-lib/**/*.g.dart
