@@ -1,5 +1,9 @@
 name: ghost
+version: 0.1.0
+authors:
+  - Vincent Engel <ve@vesion.io>
 description: ghost CMS API client
+homepage: https://github.com/0xVesion/dart_ghost
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
