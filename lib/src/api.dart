@@ -60,7 +60,10 @@ List<T> _map<T>(
   String name,
   T Function(Map<String, dynamic>) map,
 ) =>
-    (json[name] as List<dynamic>).cast<Map<String, dynamic>>().map(map).toList();
+    (json[name] as List<dynamic>)
+        .cast<Map<String, dynamic>>()
+        .map(map)
+        .toList();
 
 String _idOrSlugPath(String id, String slug) {
   if (id != null && slug != null) throw Error();

@@ -33,7 +33,8 @@ class _TagsApi {
     List<String> include,
     List<String> fields,
   }) async {
-    final json = await _api.send('/tags/${_idOrSlugPath(id, slug)}', <String, dynamic>{
+    final json =
+        await _api.send('/tags/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'include': include,
       'fields': fields,
     });
@@ -86,7 +87,8 @@ class GhostTag {
     this.url,
   });
 
-  factory GhostTag.fromJson(Map<String, dynamic> json) => _$GhostTagFromJson(json);
+  factory GhostTag.fromJson(Map<String, dynamic> json) =>
+      _$GhostTagFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostTagToJson(this);
 }

@@ -38,7 +38,8 @@ class _PostsApi {
     List<String> include,
     List<String> fields,
   }) async {
-    final json = await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
+    final json =
+        await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'formats': formats,
       'include': include,
       'fields': fields,
@@ -118,7 +119,8 @@ class GhostPost {
     this.excerpt,
   });
 
-  factory GhostPost.fromJson(Map<String, dynamic> json) => _$GhostPostFromJson(json);
+  factory GhostPost.fromJson(Map<String, dynamic> json) =>
+      _$GhostPostFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
 }

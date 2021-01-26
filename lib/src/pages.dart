@@ -38,7 +38,8 @@ class _PagesApi {
     List<String> fields,
     List<String> formats,
   }) async {
-    final json = await _api.send('/pages/${_idOrSlugPath(id, slug)}', <String, dynamic>{
+    final json =
+        await _api.send('/pages/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'include': include,
       'fields': fields,
       'formats': formats,

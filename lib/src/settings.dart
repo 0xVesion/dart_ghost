@@ -74,7 +74,8 @@ class GhostSettings {
     this.defaultLocale,
   });
 
-  factory GhostSettings.fromJson(Map<String, dynamic> json) => _$GhostSettingsFromJson(json);
+  factory GhostSettings.fromJson(Map<String, dynamic> json) =>
+      _$GhostSettingsFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostSettingsToJson(this);
 }
