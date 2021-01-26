@@ -1,5 +1,5 @@
 name: ghost
-version: 1.0.1
+version: 1.0.2
 description: Ghost CMS API client that closely follows the official implementation
 homepage: https://github.com/0xVesion/dart_ghost
 
