@@ -15,11 +15,11 @@ class GhostContentAPI {
   final String key;
   final String version;
 
-  GhostContentAPI({this.url, this.key, this.version = 'v2'});
+  GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
 
-  Future<Map<String, dynamic>> send(
+  Future<Map<String, dynamic?>> send(
     String path, [
-    Map<String, dynamic> params,
+    Map<String, dynamic>? params,
   ]) async {
     params ??= <String, dynamic>{};
     params['key'] = key;
@@ -65,7 +65,7 @@ List<T> _map<T>(
         .map(map)
         .toList();
 
-String _idOrSlugPath(String id, String slug) {
+String _idOrSlugPath(String? id, String? slug) {
   if (id != null && slug != null) throw Error();
   if (id == null && slug == null) throw Error();
 

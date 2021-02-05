@@ -7,12 +7,12 @@ class _AuthorsApi {
 
   /// [include] can be 'count.post'
   Future<List<GhostAuthor>> browse({
-    int page,
-    int limit,
-    String order,
-    List<String> include,
-    List<String> fields,
-    List<String> filters,
+    int? page,
+    int? limit,
+    String? order,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? filters,
   }) async {
     final json = await _api.send('/authors', <String, dynamic>{
       'page': page,
@@ -28,10 +28,10 @@ class _AuthorsApi {
 
   /// [include] can be 'count.post'
   Future<GhostAuthor> read({
-    String id,
-    String slug,
-    List<String> include,
-    List<String> fields,
+    String? id,
+    String? slug,
+    List<String>? include,
+    List<String>? fields,
   }) async {
     final json = await _api
         .send('/authors/${_idOrSlugPath(id, slug)}', <String, dynamic>{
@@ -45,19 +45,19 @@ class _AuthorsApi {
 
 @JsonSerializable()
 class GhostAuthor {
-  final String slug;
-  final String id;
-  final String name;
-  final String profileImage;
-  final String coverImage;
-  final String bio;
-  final String website;
-  final String location;
-  final String facebook;
-  final String twitter;
-  final String metaTitle;
-  final String metaDescription;
-  final String url;
+  final String? slug;
+  final String? id;
+  final String? name;
+  final String? profileImage;
+  final String? coverImage;
+  final String? bio;
+  final String? website;
+  final String? location;
+  final String? facebook;
+  final String? twitter;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? url;
 
   GhostAuthor({
     this.slug,

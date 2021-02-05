@@ -8,13 +8,13 @@ class _PagesApi {
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   Future<List<GhostPost>> browse({
-    int page,
-    int limit,
-    String order,
-    List<String> include,
-    List<String> fields,
-    List<String> formats,
-    List<String> filters,
+    int? page,
+    int? limit,
+    String? order,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? formats,
+    List<String>? filters,
   }) async {
     final json = await _api.send('/pages', <String, dynamic>{
       'page': page,
@@ -32,11 +32,11 @@ class _PagesApi {
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   Future<GhostPost> read({
-    String id,
-    String slug,
-    List<String> include,
-    List<String> fields,
-    List<String> formats,
+    String? id,
+    String? slug,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? formats,
   }) async {
     final json =
         await _api.send('/pages/${_idOrSlugPath(id, slug)}', <String, dynamic>{

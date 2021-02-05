@@ -14,34 +14,34 @@ class _SettingsApi {
 
 @JsonSerializable()
 class GhostSettings {
-  final String title;
-  final String description;
-  final String logo;
-  final String icon;
-  final String accentColor;
-  final String coverImage;
-  final String facebook;
-  final String twitter;
-  final String lang;
-  final String timezone;
-  final String codeinjectionHead;
-  final String codeinjectionFoot;
-  final List<GhostNavigationItem> navigation;
-  final List<GhostNavigationItem> secondaryNavigation;
-  final String metaTitle;
-  final String metaDescription;
-  final String ogImage;
-  final String ogTitle;
-  final String ogDescription;
-  final String twitterImage;
-  final String twitterTitle;
-  final String twitterDescription;
-  final String membersSupportAddress;
-  final String url;
-  final String ghostHead;
-  final String ghostFoot;
-  final String activeTimezone;
-  final String defaultLocale;
+  final String? title;
+  final String? description;
+  final String? logo;
+  final String? icon;
+  final String? accentColor;
+  final String? coverImage;
+  final String? facebook;
+  final String? twitter;
+  final String? lang;
+  final String? timezone;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final List<GhostNavigationItem>? navigation;
+  final List<GhostNavigationItem>? secondaryNavigation;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? membersSupportAddress;
+  final String? url;
+  final String? ghostHead;
+  final String? ghostFoot;
+  final String? activeTimezone;
+  final String? defaultLocale;
 
   GhostSettings({
     this.title,
@@ -87,8 +87,8 @@ class GhostNavigationItem {
     this.url,
   });
 
-  final String label;
-  final String url;
+  final String? label;
+  final String? url;
 
   factory GhostNavigationItem.fromJson(Map<String, dynamic> json) =>
       _$GhostNavigationItemFromJson(json);

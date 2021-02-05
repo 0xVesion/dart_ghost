@@ -7,12 +7,12 @@ class _TagsApi {
 
   /// [include] can be 'count.post'
   Future<List<GhostTag>> browse({
-    int page,
-    int limit,
-    String order,
-    List<String> include,
-    List<String> fields,
-    List<String> filters,
+    int? page,
+    int? limit,
+    String? order,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? filters,
   }) async {
     final json = await _api.send('/tags', <String, dynamic>{
       'page': page,
@@ -28,10 +28,10 @@ class _TagsApi {
 
   /// [include] can be 'count.post'
   Future<GhostTag> read({
-    String id,
-    String slug,
-    List<String> include,
-    List<String> fields,
+    String? id,
+    String? slug,
+    List<String>? include,
+    List<String>? fields,
   }) async {
     final json =
         await _api.send('/tags/${_idOrSlugPath(id, slug)}', <String, dynamic>{
@@ -45,25 +45,25 @@ class _TagsApi {
 
 @JsonSerializable()
 class GhostTag {
-  final String slug;
-  final String id;
-  final String name;
-  final String description;
-  final String featureImage;
-  final String visibility;
-  final String metaTitle;
-  final String metaDescription;
-  final String ogImage;
-  final String ogTitle;
-  final String ogDescription;
-  final String twitterImage;
-  final String twitterTitle;
-  final String twitterDescription;
-  final String codeinjectionHead;
-  final String codeinjectionFoot;
-  final String canonicalUrl;
-  final String accentColor;
-  final String url;
+  final String? slug;
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? featureImage;
+  final String? visibility;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final String? canonicalUrl;
+  final String? accentColor;
+  final String? url;
 
   GhostTag({
     this.slug,

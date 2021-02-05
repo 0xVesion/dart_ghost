@@ -8,13 +8,13 @@ class _PostsApi {
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   Future<List<GhostPost>> browse({
-    int page,
-    int limit,
-    String order,
-    List<String> include,
-    List<String> fields,
-    List<String> formats,
-    List<String> filters,
+    int? page,
+    int? limit,
+    String? order,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? formats,
+    List<String>? filters,
   }) async {
     final json = await _api.send('/posts', <String, dynamic>{
       'page': page,
@@ -32,11 +32,11 @@ class _PostsApi {
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   Future<GhostPost> read({
-    String id,
-    String slug,
-    List<String> formats,
-    List<String> include,
-    List<String> fields,
+    String? id,
+    String? slug,
+    List<String>? formats,
+    List<String>? include,
+    List<String>? fields,
   }) async {
     final json =
         await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
@@ -51,38 +51,38 @@ class _PostsApi {
 
 @JsonSerializable()
 class GhostPost {
-  final String slug;
-  final String id;
-  final String uuid;
-  final String title;
-  final String html;
-  final String plaintext;
-  final String commentId;
-  final String featureImage;
-  final bool featured;
-  final bool page;
-  final String metaTitle;
-  final String metaDescription;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final DateTime publishedAt;
-  final String customExcerpt;
-  final String codeinjectionHead;
-  final String codeinjectionFoot;
-  final String ogImage;
-  final String ogTitle;
-  final String ogDescription;
-  final String twitterImage;
-  final String twitterTitle;
-  final String twitterDescription;
-  final String customTemplate;
-  final String canonicalUrl;
-  final List<GhostAuthor> authors;
-  final List<GhostTag> tags;
-  final GhostAuthor primaryAuthor;
-  final GhostTag primaryTag;
-  final String url;
-  final String excerpt;
+  final String? slug;
+  final String? id;
+  final String? uuid;
+  final String? title;
+  final String? html;
+  final String? plaintext;
+  final String? commentId;
+  final String? featureImage;
+  final bool? featured;
+  final bool? page;
+  final String? metaTitle;
+  final String? metaDescription;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? publishedAt;
+  final String? customExcerpt;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? customTemplate;
+  final String? canonicalUrl;
+  final List<GhostAuthor>? authors;
+  final List<GhostTag>? tags;
+  final GhostAuthor? primaryAuthor;
+  final GhostTag? primaryTag;
+  final String? url;
+  final String? excerpt;
 
   GhostPost({
     this.slug,

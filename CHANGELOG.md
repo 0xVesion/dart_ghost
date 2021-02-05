@@ -1,3 +1,7 @@
+## 2.0.0-nullsafety.0
+
+- Migrated to null safety
+
 ## 1.0.2
 
 - Formatted code with dartfmt
