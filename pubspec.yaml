@@ -1,16 +1,16 @@
 name: ghost
-version: 2.0.0-nullsafety.0
+version: 2.0.1
 description: Ghost CMS API client that closely follows the official implementation
 homepage: https://github.com/0xVesion/dart_ghost
 
 environment:
-  sdk: '>=2.12.0-29.10.beta <3.0.0'
+  sdk: '>=2.17.0 <3.0.0'
 
 dependencies:
-  http: ^0.13.0
-  json_annotation: ^4.0.0-nullsafety.0
+  http: ^0.13.4
+  json_annotation: ^4.5.0
 
 dev_dependencies:
-  pedantic: ^1.10.0
-  json_serializable: ^4.0.0-nullsafety.0
-  build_runner: ^1.10.13
+  build_runner: ^2.1.11
+  flutter_lints: ^2.0.1
+  json_serializable: ^6.2.0
