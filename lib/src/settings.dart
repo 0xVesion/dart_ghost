@@ -1,9 +1,9 @@
 part of 'api.dart';
 
 class _SettingsApi {
-  final GhostContentAPI _api;
 
   _SettingsApi(this._api);
+  final GhostContentAPI _api;
 
   Future<GhostSettings> browse() async {
     final json = await _api.send('/settings');
@@ -14,34 +14,6 @@ class _SettingsApi {
 
 @JsonSerializable()
 class GhostSettings {
-  final String? title;
-  final String? description;
-  final String? logo;
-  final String? icon;
-  final String? accentColor;
-  final String? coverImage;
-  final String? facebook;
-  final String? twitter;
-  final String? lang;
-  final String? timezone;
-  final String? codeinjectionHead;
-  final String? codeinjectionFoot;
-  final List<GhostNavigationItem>? navigation;
-  final List<GhostNavigationItem>? secondaryNavigation;
-  final String? metaTitle;
-  final String? metaDescription;
-  final String? ogImage;
-  final String? ogTitle;
-  final String? ogDescription;
-  final String? twitterImage;
-  final String? twitterTitle;
-  final String? twitterDescription;
-  final String? membersSupportAddress;
-  final String? url;
-  final String? ghostHead;
-  final String? ghostFoot;
-  final String? activeTimezone;
-  final String? defaultLocale;
 
   GhostSettings({
     this.title,
@@ -76,6 +48,34 @@ class GhostSettings {
 
   factory GhostSettings.fromJson(Map<String, dynamic> json) =>
       _$GhostSettingsFromJson(json);
+  final String? title;
+  final String? description;
+  final String? logo;
+  final String? icon;
+  final String? accentColor;
+  final String? coverImage;
+  final String? facebook;
+  final String? twitter;
+  final String? lang;
+  final String? timezone;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final List<GhostNavigationItem>? navigation;
+  final List<GhostNavigationItem>? secondaryNavigation;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? membersSupportAddress;
+  final String? url;
+  final String? ghostHead;
+  final String? ghostFoot;
+  final String? activeTimezone;
+  final String? defaultLocale;
 
   Map<String, dynamic> toJson() => _$GhostSettingsToJson(this);
 }
@@ -87,11 +87,11 @@ class GhostNavigationItem {
     this.url,
   });
 
-  final String? label;
-  final String? url;
-
   factory GhostNavigationItem.fromJson(Map<String, dynamic> json) =>
       _$GhostNavigationItemFromJson(json);
+
+  final String? label;
+  final String? url;
 
   Map<String, dynamic> toJson() => _$GhostNavigationItemToJson(this);
 }

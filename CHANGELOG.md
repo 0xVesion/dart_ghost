@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Update dependencies (by @redDwarf03)
+
 ## 2.0.1
 
 - Update dependencies (by @redDwarf03)

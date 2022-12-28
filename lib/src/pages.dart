@@ -1,9 +1,9 @@
 part of 'api.dart';
 
 class _PagesApi {
-  final GhostContentAPI _api;
 
   _PagesApi(this._api);
+  final GhostContentAPI _api;
 
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
@@ -26,7 +26,7 @@ class _PagesApi {
       'filters': filters,
     });
 
-    return _map(json, 'pages', (e) => GhostPost.fromJson(e));
+    return _map(json, 'pages', GhostPost.fromJson);
   }
 
   /// [formats] can be 'html' and 'plaintext'
@@ -45,6 +45,6 @@ class _PagesApi {
       'formats': formats,
     });
 
-    return _map(json, 'pages', (e) => GhostPost.fromJson(e)).first;
+    return _map(json, 'pages', GhostPost.fromJson).first;
   }
 }

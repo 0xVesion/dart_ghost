@@ -11,34 +11,34 @@ part 'settings.dart';
 part 'tags.dart';
 
 class GhostContentAPI {
+  GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
   final String url;
   final String key;
   final String version;
 
-  GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
-
-  Future<Map<String, dynamic?>> send(
+  Future<Map<String, dynamic>> send(
     String path, [
     Map<String, dynamic>? params,
   ]) async {
     params ??= <String, dynamic>{};
     params['key'] = key;
 
-    final String Function(dynamic value) valueToString = (dynamic value) {
+    String valueToString(dynamic value) {
       if (value is List) return value.map((dynamic e) => '$e').join(',');
 
       return '$value';
-    };
+    }
 
-    final String paramsString = params.entries
+    final paramsString = params.entries
         .where((MapEntry<String, dynamic> e) => e.value != null)
-        .map((MapEntry<String, dynamic> e) =>
-            '${e.key}=${valueToString(e.value)}')
+        .map(
+          (MapEntry<String, dynamic> e) => '${e.key}=${valueToString(e.value)}',
+        )
         .join('&');
 
-    final String uri = '$url/ghost/api/$version/content$path?$paramsString';
+    final uri = '$url/ghost/api/$version/content$path?$paramsString';
 
-    final http.Response response = await http.get(Uri.parse(uri));
+    final response = await http.get(Uri.parse(uri));
 
     if (response.statusCode != 200) throw Exception(response.body);
 
