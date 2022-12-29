@@ -1,9 +1,9 @@
 part of 'api.dart';
 
 class _PostsApi {
+  final GhostContentAPI _api;
 
   _PostsApi(this._api);
-  final GhostContentAPI _api;
 
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
@@ -26,7 +26,7 @@ class _PostsApi {
       'filters': filters,
     });
 
-    return _map(json, 'posts', GhostPost.fromJson);
+    return _map(json, 'posts', (e) => GhostPost.fromJson(e));
   }
 
   /// [formats] can be 'html' and 'plaintext'
@@ -45,12 +45,44 @@ class _PostsApi {
       'fields': fields,
     });
 
-    return _map(json, 'posts', GhostPost.fromJson).first;
+    return _map(json, 'posts', (e) => GhostPost.fromJson(e)).first;
   }
 }
 
 @JsonSerializable()
 class GhostPost {
+  final String? slug;
+  final String? id;
+  final String? uuid;
+  final String? title;
+  final String? html;
+  final String? plaintext;
+  final String? commentId;
+  final String? featureImage;
+  final bool? featured;
+  final bool? page;
+  final String? metaTitle;
+  final String? metaDescription;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
+  final DateTime? publishedAt;
+  final String? customExcerpt;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? customTemplate;
+  final String? canonicalUrl;
+  final List<GhostAuthor>? authors;
+  final List<GhostTag>? tags;
+  final GhostAuthor? primaryAuthor;
+  final GhostTag? primaryTag;
+  final String? url;
+  final String? excerpt;
 
   GhostPost({
     this.slug,
@@ -89,38 +121,6 @@ class GhostPost {
 
   factory GhostPost.fromJson(Map<String, dynamic> json) =>
       _$GhostPostFromJson(json);
-  final String? slug;
-  final String? id;
-  final String? uuid;
-  final String? title;
-  final String? html;
-  final String? plaintext;
-  final String? commentId;
-  final String? featureImage;
-  final bool? featured;
-  final bool? page;
-  final String? metaTitle;
-  final String? metaDescription;
-  final DateTime? createdAt;
-  final DateTime? updatedAt;
-  final DateTime? publishedAt;
-  final String? customExcerpt;
-  final String? codeinjectionHead;
-  final String? codeinjectionFoot;
-  final String? ogImage;
-  final String? ogTitle;
-  final String? ogDescription;
-  final String? twitterImage;
-  final String? twitterTitle;
-  final String? twitterDescription;
-  final String? customTemplate;
-  final String? canonicalUrl;
-  final List<GhostAuthor>? authors;
-  final List<GhostTag>? tags;
-  final GhostAuthor? primaryAuthor;
-  final GhostTag? primaryTag;
-  final String? url;
-  final String? excerpt;
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
 }

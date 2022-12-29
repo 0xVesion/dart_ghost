@@ -1,9 +1,9 @@
 part of 'api.dart';
 
 class _AuthorsApi {
+  final GhostContentAPI _api;
 
   _AuthorsApi(this._api);
-  final GhostContentAPI _api;
 
   /// [include] can be 'count.post'
   Future<List<GhostAuthor>> browse({
@@ -23,7 +23,7 @@ class _AuthorsApi {
       'filters': filters,
     });
 
-    return _map(json, 'authors', GhostAuthor.fromJson);
+    return _map(json, 'authors', (e) => GhostAuthor.fromJson(e));
   }
 
   /// [include] can be 'count.post'
@@ -39,12 +39,25 @@ class _AuthorsApi {
       'fields': fields,
     });
 
-    return _map(json, 'authors', GhostAuthor.fromJson).first;
+    return _map(json, 'authors', (e) => GhostAuthor.fromJson(e)).first;
   }
 }
 
 @JsonSerializable()
 class GhostAuthor {
+  final String? slug;
+  final String? id;
+  final String? name;
+  final String? profileImage;
+  final String? coverImage;
+  final String? bio;
+  final String? website;
+  final String? location;
+  final String? facebook;
+  final String? twitter;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? url;
 
   GhostAuthor({
     this.slug,
@@ -64,19 +77,6 @@ class GhostAuthor {
 
   factory GhostAuthor.fromJson(Map<String, dynamic> json) =>
       _$GhostAuthorFromJson(json);
-  final String? slug;
-  final String? id;
-  final String? name;
-  final String? profileImage;
-  final String? coverImage;
-  final String? bio;
-  final String? website;
-  final String? location;
-  final String? facebook;
-  final String? twitter;
-  final String? metaTitle;
-  final String? metaDescription;
-  final String? url;
 
   Map<String, dynamic> toJson() => _$GhostAuthorToJson(this);
 }

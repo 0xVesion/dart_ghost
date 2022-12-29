@@ -11,32 +11,31 @@ part 'settings.dart';
 part 'tags.dart';
 
 class GhostContentAPI {
-  GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
   final String url;
   final String key;
   final String version;
 
-  Future<Map<String, dynamic>> send(
+  GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
+
+  Future<Map<String, dynamic?>> send(
     String path, [
     Map<String, dynamic>? params,
   ]) async {
     params ??= <String, dynamic>{};
     params['key'] = key;
 
-    String valueToString(dynamic value) {
+    final valueToString = (dynamic value) {
       if (value is List) return value.map((dynamic e) => '$e').join(',');
 
       return '$value';
-    }
+    };
 
     final paramsString = params.entries
-        .where((MapEntry<String, dynamic> e) => e.value != null)
-        .map(
-          (MapEntry<String, dynamic> e) => '${e.key}=${valueToString(e.value)}',
-        )
+        .where((e) => e.value != null)
+        .map((e) => '${e.key}=${valueToString(e.value)}')
         .join('&');
 
-    final uri = '$url/ghost/api/$version/content$path?$paramsString';
+    final uri = '${url}/ghost/api/${version}/content${path}?$paramsString';
 
     final response = await http.get(Uri.parse(uri));
 
@@ -70,5 +69,5 @@ String _idOrSlugPath(String? id, String? slug) {
   if (id != null && slug != null) throw Error();
   if (id == null && slug == null) throw Error();
 
-  return slug == null ? '$id' : 'slug/$slug';
+  return slug == null ? '${id}' : 'slug/${slug}';
 }

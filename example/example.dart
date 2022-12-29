@@ -1,5 +1,3 @@
-import 'dart:developer' as dev;
-
 import 'package:ghost/ghost.dart';
 
 /// As this package closely follows the official js implementation of the ghost api client, the js
@@ -7,18 +5,18 @@ import 'package:ghost/ghost.dart';
 /// setting up the ghost dart client. All examples there can easily be adapted to dart. This example
 /// was also adapted from there.
 Future<void> main() async {
-  final GhostContentAPI api = GhostContentAPI(
+  final api = GhostContentAPI(
     url: 'https://demo.ghost.io',
     key: '22444f78447824223cefc48062',
     version: 'v3',
   );
 
-  final List<GhostPost> posts = await api.posts.browse(
+  final posts = await api.posts.browse(
     limit: 5,
-    include: <String>['tags', 'authors'],
+    include: ['tags', 'authors'],
   );
 
-  for (final GhostPost post in posts) {
-    dev.log(post.title!);
+  for (final post in posts) {
+    print(post.title);
   }
 }

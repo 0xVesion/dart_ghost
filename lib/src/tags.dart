@@ -1,9 +1,9 @@
 part of 'api.dart';
 
 class _TagsApi {
+  final GhostContentAPI _api;
 
   _TagsApi(this._api);
-  final GhostContentAPI _api;
 
   /// [include] can be 'count.post'
   Future<List<GhostTag>> browse({
@@ -23,7 +23,7 @@ class _TagsApi {
       'filters': filters,
     });
 
-    return _map(json, 'tags', GhostTag.fromJson);
+    return _map(json, 'tags', (e) => GhostTag.fromJson(e));
   }
 
   /// [include] can be 'count.post'
@@ -39,12 +39,31 @@ class _TagsApi {
       'fields': fields,
     });
 
-    return _map(json, 'tags', GhostTag.fromJson).first;
+    return _map(json, 'tags', (e) => GhostTag.fromJson(e)).first;
   }
 }
 
 @JsonSerializable()
 class GhostTag {
+  final String? slug;
+  final String? id;
+  final String? name;
+  final String? description;
+  final String? featureImage;
+  final String? visibility;
+  final String? metaTitle;
+  final String? metaDescription;
+  final String? ogImage;
+  final String? ogTitle;
+  final String? ogDescription;
+  final String? twitterImage;
+  final String? twitterTitle;
+  final String? twitterDescription;
+  final String? codeinjectionHead;
+  final String? codeinjectionFoot;
+  final String? canonicalUrl;
+  final String? accentColor;
+  final String? url;
 
   GhostTag({
     this.slug,
@@ -70,25 +89,6 @@ class GhostTag {
 
   factory GhostTag.fromJson(Map<String, dynamic> json) =>
       _$GhostTagFromJson(json);
-  final String? slug;
-  final String? id;
-  final String? name;
-  final String? description;
-  final String? featureImage;
-  final String? visibility;
-  final String? metaTitle;
-  final String? metaDescription;
-  final String? ogImage;
-  final String? ogTitle;
-  final String? ogDescription;
-  final String? twitterImage;
-  final String? twitterTitle;
-  final String? twitterDescription;
-  final String? codeinjectionHead;
-  final String? codeinjectionFoot;
-  final String? canonicalUrl;
-  final String? accentColor;
-  final String? url;
 
   Map<String, dynamic> toJson() => _$GhostTagToJson(this);
 }
