@@ -23,7 +23,7 @@ class _PostsApi {
       'include': include,
       'fields': fields,
       'formats': formats,
-      'filters': filters,
+      'filter': filters,
     });
 
     return _map(json, 'posts', (e) => GhostPost.fromJson(e));
