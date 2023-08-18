@@ -1,3 +1,7 @@
+## 2.0.3
+
+- Migration to Dart 3 (by @redDwarf03)
+
 ## 2.0.2
 
 - Update dependencies (by @redDwarf03)
