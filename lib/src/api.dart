@@ -17,7 +17,7 @@ class GhostContentAPI {
 
   GhostContentAPI({required this.url, required this.key, this.version = 'v2'});
 
-  Future<Map<String, dynamic?>> send(
+  Future<Map<String, dynamic>> send(
     String path, [
     Map<String, dynamic>? params,
   ]) async {
