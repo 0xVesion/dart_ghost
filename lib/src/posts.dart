@@ -136,3 +136,33 @@ class GhostPost {
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
 }
+
+enum GhostPostVisibility {
+  public,
+  membersOnly,
+  paidMembersOnly;
+
+  static GhostPostVisibility fromVisibility(String visibility) {
+    switch (visibility) {
+      case 'public':
+        return GhostPostVisibility.public;
+      case 'members':
+        return GhostPostVisibility.membersOnly;
+      case 'paid':
+        return GhostPostVisibility.paidMembersOnly;
+      default:
+        return GhostPostVisibility.public;
+    }
+  }
+
+  String toVisibility() {
+    switch (this) {
+      case GhostPostVisibility.public:
+        return 'public';
+      case GhostPostVisibility.membersOnly:
+        return 'members';
+      case GhostPostVisibility.paidMembersOnly:
+        return 'paid';
+    }
+  }
+}
