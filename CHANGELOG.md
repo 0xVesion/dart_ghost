@@ -1,3 +1,9 @@
+## 2.0.4
+
+- Added missing GhostPost Properties from [GhostContentApi v5.80.4.](https://ghost.org/docs/content-api/#posts)
+- New GhostPostVisibility Enum
+- Update dependencies
+
 ## 2.0.3
 
 - Migration to Dart 3 (by @redDwarf03)
