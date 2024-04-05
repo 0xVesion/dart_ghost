@@ -83,6 +83,12 @@ class GhostPost {
   final GhostTag? primaryTag;
   final String? url;
   final String? excerpt;
+  final String? visibility;
+  final double? readingTime;
+  final bool? access;
+  final bool? comments;
+  final String? featureImageAlt;
+  final String? featureImageCaption;
 
   GhostPost({
     this.slug,
@@ -117,6 +123,12 @@ class GhostPost {
     this.primaryTag,
     this.url,
     this.excerpt,
+    this.visibility,
+    this.readingTime,
+    this.access,
+    this.comments,
+    this.featureImageAlt,
+    this.featureImageCaption,
   });
 
   factory GhostPost.fromJson(Map<String, dynamic> json) =>
