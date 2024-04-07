@@ -7,6 +7,7 @@ class _PostsApi {
 
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
+  /// [filter] can only be used if no [filters] are provided
   Future<List<GhostPost>> browse({
     int? page,
     int? limit,
@@ -15,6 +16,7 @@ class _PostsApi {
     List<String>? fields,
     List<String>? formats,
     List<String>? filters,
+    String? filter,
   }) async {
     final json = await _api.send('/posts', <String, dynamic>{
       'page': page,
@@ -23,7 +25,7 @@ class _PostsApi {
       'include': include,
       'fields': fields,
       'formats': formats,
-      'filter': filters,
+      'filter': filters ?? filter,
     });
 
     return _map(json, 'posts', (e) => GhostPost.fromJson(e));
