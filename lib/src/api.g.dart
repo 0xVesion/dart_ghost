@@ -6,23 +6,21 @@ part of 'api.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-GhostAuthor _$GhostAuthorFromJson(Map<String, dynamic> json) {
-  return GhostAuthor(
-    slug: json['slug'] as String?,
-    id: json['id'] as String?,
-    name: json['name'] as String?,
-    profileImage: json['profile_image'] as String?,
-    coverImage: json['cover_image'] as String?,
-    bio: json['bio'] as String?,
-    website: json['website'] as String?,
-    location: json['location'] as String?,
-    facebook: json['facebook'] as String?,
-    twitter: json['twitter'] as String?,
-    metaTitle: json['meta_title'] as String?,
-    metaDescription: json['meta_description'] as String?,
-    url: json['url'] as String?,
-  );
-}
+GhostAuthor _$GhostAuthorFromJson(Map<String, dynamic> json) => GhostAuthor(
+      slug: json['slug'] as String?,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      profileImage: json['profile_image'] as String?,
+      coverImage: json['cover_image'] as String?,
+      bio: json['bio'] as String?,
+      website: json['website'] as String?,
+      location: json['location'] as String?,
+      facebook: json['facebook'] as String?,
+      twitter: json['twitter'] as String?,
+      metaTitle: json['meta_title'] as String?,
+      metaDescription: json['meta_description'] as String?,
+      url: json['url'] as String?,
+    );
 
 Map<String, dynamic> _$GhostAuthorToJson(GhostAuthor instance) =>
     <String, dynamic>{
@@ -41,56 +39,61 @@ Map<String, dynamic> _$GhostAuthorToJson(GhostAuthor instance) =>
       'url': instance.url,
     };
 
-GhostPost _$GhostPostFromJson(Map<String, dynamic> json) {
-  return GhostPost(
-    slug: json['slug'] as String?,
-    id: json['id'] as String?,
-    uuid: json['uuid'] as String?,
-    title: json['title'] as String?,
-    html: json['html'] as String?,
-    plaintext: json['plaintext'] as String?,
-    commentId: json['comment_id'] as String?,
-    featureImage: json['feature_image'] as String?,
-    featured: json['featured'] as bool?,
-    page: json['page'] as bool?,
-    metaTitle: json['meta_title'] as String?,
-    metaDescription: json['meta_description'] as String?,
-    createdAt: json['created_at'] == null
-        ? null
-        : DateTime.parse(json['created_at'] as String),
-    updatedAt: json['updated_at'] == null
-        ? null
-        : DateTime.parse(json['updated_at'] as String),
-    publishedAt: json['published_at'] == null
-        ? null
-        : DateTime.parse(json['published_at'] as String),
-    customExcerpt: json['custom_excerpt'] as String?,
-    codeinjectionHead: json['codeinjection_head'] as String?,
-    codeinjectionFoot: json['codeinjection_foot'] as String?,
-    ogImage: json['og_image'] as String?,
-    ogTitle: json['og_title'] as String?,
-    ogDescription: json['og_description'] as String?,
-    twitterImage: json['twitter_image'] as String?,
-    twitterTitle: json['twitter_title'] as String?,
-    twitterDescription: json['twitter_description'] as String?,
-    customTemplate: json['custom_template'] as String?,
-    canonicalUrl: json['canonical_url'] as String?,
-    authors: (json['authors'] as List<dynamic>?)
-        ?.map((e) => GhostAuthor.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    tags: (json['tags'] as List<dynamic>?)
-        ?.map((e) => GhostTag.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    primaryAuthor: json['primary_author'] == null
-        ? null
-        : GhostAuthor.fromJson(json['primary_author'] as Map<String, dynamic>),
-    primaryTag: json['primary_tag'] == null
-        ? null
-        : GhostTag.fromJson(json['primary_tag'] as Map<String, dynamic>),
-    url: json['url'] as String?,
-    excerpt: json['excerpt'] as String?,
-  );
-}
+GhostPost _$GhostPostFromJson(Map<String, dynamic> json) => GhostPost(
+      slug: json['slug'] as String?,
+      id: json['id'] as String?,
+      uuid: json['uuid'] as String?,
+      title: json['title'] as String?,
+      html: json['html'] as String?,
+      plaintext: json['plaintext'] as String?,
+      commentId: json['comment_id'] as String?,
+      featureImage: json['feature_image'] as String?,
+      featured: json['featured'] as bool?,
+      page: json['page'] as bool?,
+      metaTitle: json['meta_title'] as String?,
+      metaDescription: json['meta_description'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      publishedAt: json['published_at'] == null
+          ? null
+          : DateTime.parse(json['published_at'] as String),
+      customExcerpt: json['custom_excerpt'] as String?,
+      codeinjectionHead: json['codeinjection_head'] as String?,
+      codeinjectionFoot: json['codeinjection_foot'] as String?,
+      ogImage: json['og_image'] as String?,
+      ogTitle: json['og_title'] as String?,
+      ogDescription: json['og_description'] as String?,
+      twitterImage: json['twitter_image'] as String?,
+      twitterTitle: json['twitter_title'] as String?,
+      twitterDescription: json['twitter_description'] as String?,
+      customTemplate: json['custom_template'] as String?,
+      canonicalUrl: json['canonical_url'] as String?,
+      authors: (json['authors'] as List<dynamic>?)
+          ?.map((e) => GhostAuthor.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tags: (json['tags'] as List<dynamic>?)
+          ?.map((e) => GhostTag.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      primaryAuthor: json['primary_author'] == null
+          ? null
+          : GhostAuthor.fromJson(
+              json['primary_author'] as Map<String, dynamic>),
+      primaryTag: json['primary_tag'] == null
+          ? null
+          : GhostTag.fromJson(json['primary_tag'] as Map<String, dynamic>),
+      url: json['url'] as String?,
+      excerpt: json['excerpt'] as String?,
+      visibility: json['visibility'] as String?,
+      readingTime: (json['reading_time'] as num?)?.toDouble(),
+      access: json['access'] as bool?,
+      comments: json['comments'] as bool?,
+      featureImageAlt: json['feature_image_alt'] as String?,
+      featureImageCaption: json['feature_image_caption'] as String?,
+    );
 
 Map<String, dynamic> _$GhostPostToJson(GhostPost instance) => <String, dynamic>{
       'slug': instance.slug,
@@ -125,44 +128,49 @@ Map<String, dynamic> _$GhostPostToJson(GhostPost instance) => <String, dynamic>{
       'primary_tag': instance.primaryTag,
       'url': instance.url,
       'excerpt': instance.excerpt,
+      'visibility': instance.visibility,
+      'reading_time': instance.readingTime,
+      'access': instance.access,
+      'comments': instance.comments,
+      'feature_image_alt': instance.featureImageAlt,
+      'feature_image_caption': instance.featureImageCaption,
     };
 
-GhostSettings _$GhostSettingsFromJson(Map<String, dynamic> json) {
-  return GhostSettings(
-    title: json['title'] as String?,
-    description: json['description'] as String?,
-    logo: json['logo'] as String?,
-    icon: json['icon'] as String?,
-    accentColor: json['accent_color'] as String?,
-    coverImage: json['cover_image'] as String?,
-    facebook: json['facebook'] as String?,
-    twitter: json['twitter'] as String?,
-    lang: json['lang'] as String?,
-    timezone: json['timezone'] as String?,
-    codeinjectionHead: json['codeinjection_head'] as String?,
-    codeinjectionFoot: json['codeinjection_foot'] as String?,
-    navigation: (json['navigation'] as List<dynamic>?)
-        ?.map((e) => GhostNavigationItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    secondaryNavigation: (json['secondary_navigation'] as List<dynamic>?)
-        ?.map((e) => GhostNavigationItem.fromJson(e as Map<String, dynamic>))
-        .toList(),
-    metaTitle: json['meta_title'] as String?,
-    metaDescription: json['meta_description'] as String?,
-    ogImage: json['og_image'] as String?,
-    ogTitle: json['og_title'] as String?,
-    ogDescription: json['og_description'] as String?,
-    twitterImage: json['twitter_image'] as String?,
-    twitterTitle: json['twitter_title'] as String?,
-    twitterDescription: json['twitter_description'] as String?,
-    membersSupportAddress: json['members_support_address'] as String?,
-    url: json['url'] as String?,
-    ghostHead: json['ghost_head'] as String?,
-    ghostFoot: json['ghost_foot'] as String?,
-    activeTimezone: json['active_timezone'] as String?,
-    defaultLocale: json['default_locale'] as String?,
-  );
-}
+GhostSettings _$GhostSettingsFromJson(Map<String, dynamic> json) =>
+    GhostSettings(
+      title: json['title'] as String?,
+      description: json['description'] as String?,
+      logo: json['logo'] as String?,
+      icon: json['icon'] as String?,
+      accentColor: json['accent_color'] as String?,
+      coverImage: json['cover_image'] as String?,
+      facebook: json['facebook'] as String?,
+      twitter: json['twitter'] as String?,
+      lang: json['lang'] as String?,
+      timezone: json['timezone'] as String?,
+      codeinjectionHead: json['codeinjection_head'] as String?,
+      codeinjectionFoot: json['codeinjection_foot'] as String?,
+      navigation: (json['navigation'] as List<dynamic>?)
+          ?.map((e) => GhostNavigationItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      secondaryNavigation: (json['secondary_navigation'] as List<dynamic>?)
+          ?.map((e) => GhostNavigationItem.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      metaTitle: json['meta_title'] as String?,
+      metaDescription: json['meta_description'] as String?,
+      ogImage: json['og_image'] as String?,
+      ogTitle: json['og_title'] as String?,
+      ogDescription: json['og_description'] as String?,
+      twitterImage: json['twitter_image'] as String?,
+      twitterTitle: json['twitter_title'] as String?,
+      twitterDescription: json['twitter_description'] as String?,
+      membersSupportAddress: json['members_support_address'] as String?,
+      url: json['url'] as String?,
+      ghostHead: json['ghost_head'] as String?,
+      ghostFoot: json['ghost_foot'] as String?,
+      activeTimezone: json['active_timezone'] as String?,
+      defaultLocale: json['default_locale'] as String?,
+    );
 
 Map<String, dynamic> _$GhostSettingsToJson(GhostSettings instance) =>
     <String, dynamic>{
@@ -196,12 +204,11 @@ Map<String, dynamic> _$GhostSettingsToJson(GhostSettings instance) =>
       'default_locale': instance.defaultLocale,
     };
 
-GhostNavigationItem _$GhostNavigationItemFromJson(Map<String, dynamic> json) {
-  return GhostNavigationItem(
-    label: json['label'] as String?,
-    url: json['url'] as String?,
-  );
-}
+GhostNavigationItem _$GhostNavigationItemFromJson(Map<String, dynamic> json) =>
+    GhostNavigationItem(
+      label: json['label'] as String?,
+      url: json['url'] as String?,
+    );
 
 Map<String, dynamic> _$GhostNavigationItemToJson(
         GhostNavigationItem instance) =>
@@ -210,29 +217,27 @@ Map<String, dynamic> _$GhostNavigationItemToJson(
       'url': instance.url,
     };
 
-GhostTag _$GhostTagFromJson(Map<String, dynamic> json) {
-  return GhostTag(
-    slug: json['slug'] as String?,
-    id: json['id'] as String?,
-    name: json['name'] as String?,
-    description: json['description'] as String?,
-    featureImage: json['feature_image'] as String?,
-    visibility: json['visibility'] as String?,
-    metaTitle: json['meta_title'] as String?,
-    metaDescription: json['meta_description'] as String?,
-    ogImage: json['og_image'] as String?,
-    ogTitle: json['og_title'] as String?,
-    ogDescription: json['og_description'] as String?,
-    twitterImage: json['twitter_image'] as String?,
-    twitterTitle: json['twitter_title'] as String?,
-    twitterDescription: json['twitter_description'] as String?,
-    codeinjectionHead: json['codeinjection_head'] as String?,
-    codeinjectionFoot: json['codeinjection_foot'] as String?,
-    canonicalUrl: json['canonical_url'] as String?,
-    accentColor: json['accent_color'] as String?,
-    url: json['url'] as String?,
-  );
-}
+GhostTag _$GhostTagFromJson(Map<String, dynamic> json) => GhostTag(
+      slug: json['slug'] as String?,
+      id: json['id'] as String?,
+      name: json['name'] as String?,
+      description: json['description'] as String?,
+      featureImage: json['feature_image'] as String?,
+      visibility: json['visibility'] as String?,
+      metaTitle: json['meta_title'] as String?,
+      metaDescription: json['meta_description'] as String?,
+      ogImage: json['og_image'] as String?,
+      ogTitle: json['og_title'] as String?,
+      ogDescription: json['og_description'] as String?,
+      twitterImage: json['twitter_image'] as String?,
+      twitterTitle: json['twitter_title'] as String?,
+      twitterDescription: json['twitter_description'] as String?,
+      codeinjectionHead: json['codeinjection_head'] as String?,
+      codeinjectionFoot: json['codeinjection_foot'] as String?,
+      canonicalUrl: json['canonical_url'] as String?,
+      accentColor: json['accent_color'] as String?,
+      url: json['url'] as String?,
+    );
 
 Map<String, dynamic> _$GhostTagToJson(GhostTag instance) => <String, dynamic>{
       'slug': instance.slug,

@@ -85,6 +85,12 @@ class GhostPost {
   final GhostTag? primaryTag;
   final String? url;
   final String? excerpt;
+  final String? visibility;
+  final double? readingTime;
+  final bool? access;
+  final bool? comments;
+  final String? featureImageAlt;
+  final String? featureImageCaption;
 
   GhostPost({
     this.slug,
@@ -119,10 +125,46 @@ class GhostPost {
     this.primaryTag,
     this.url,
     this.excerpt,
+    this.visibility,
+    this.readingTime,
+    this.access,
+    this.comments,
+    this.featureImageAlt,
+    this.featureImageCaption,
   });
 
   factory GhostPost.fromJson(Map<String, dynamic> json) =>
       _$GhostPostFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
+}
+
+enum GhostPostVisibility {
+  public,
+  membersOnly,
+  paidMembersOnly;
+
+  static GhostPostVisibility fromVisibility(String visibility) {
+    switch (visibility) {
+      case 'public':
+        return GhostPostVisibility.public;
+      case 'members':
+        return GhostPostVisibility.membersOnly;
+      case 'paid':
+        return GhostPostVisibility.paidMembersOnly;
+      default:
+        return GhostPostVisibility.public;
+    }
+  }
+
+  String toVisibility() {
+    switch (this) {
+      case GhostPostVisibility.public:
+        return 'public';
+      case GhostPostVisibility.membersOnly:
+        return 'members';
+      case GhostPostVisibility.paidMembersOnly:
+        return 'paid';
+    }
+  }
 }
