@@ -1,3 +1,9 @@
+## 2.0.5
+
+- Added new GhostPost browse functionality to get PaginationInfo from meta data
+- Added types.dart to store new types
+- Added example to browser for ghost post with pagination info
+
 ## 2.0.4
 
 - Added missing GhostPost Properties from [GhostContentApi v5.80.4.](https://ghost.org/docs/content-api/#posts)

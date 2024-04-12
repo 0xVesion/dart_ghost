@@ -39,6 +39,26 @@ Map<String, dynamic> _$GhostAuthorToJson(GhostAuthor instance) =>
       'url': instance.url,
     };
 
+PaginationInfo _$PaginationInfoFromJson(Map<String, dynamic> json) =>
+    PaginationInfo(
+      page: json['page'] as int?,
+      limit: json['limit'] as int?,
+      pages: json['pages'] as int?,
+      total: json['total'] as int?,
+      next: json['next'] as int?,
+      prev: json['prev'] as int?,
+    );
+
+Map<String, dynamic> _$PaginationInfoToJson(PaginationInfo instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'limit': instance.limit,
+      'pages': instance.pages,
+      'total': instance.total,
+      'next': instance.next,
+      'prev': instance.prev,
+    };
+
 GhostPost _$GhostPostFromJson(Map<String, dynamic> json) => GhostPost(
       slug: json['slug'] as String?,
       id: json['id'] as String?,

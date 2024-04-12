@@ -9,6 +9,7 @@ part 'pages.dart';
 part 'posts.dart';
 part 'settings.dart';
 part 'tags.dart';
+part 'types.dart';
 
 class GhostContentAPI {
   final String url;
