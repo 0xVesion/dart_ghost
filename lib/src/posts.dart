@@ -59,8 +59,7 @@ class _PostsApi {
     });
 
     final posts = _map(json, 'posts', GhostPost.fromJson);
-    final pagination = PaginationInfo.fromJson(
-        json['meta']['pagination'] as Map<String, dynamic>);
+    final pagination = PaginationInfo.fromJson(json['meta']['pagination'] as Map<String, dynamic>);
 
     return (paginationInfo: pagination, posts: posts);
   }
@@ -74,8 +73,7 @@ class _PostsApi {
     List<String>? include,
     List<String>? fields,
   }) async {
-    final json =
-        await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
+    final json = await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'formats': formats,
       'include': include,
       'fields': fields,
@@ -84,6 +82,8 @@ class _PostsApi {
     return _map(json, 'posts', (e) => GhostPost.fromJson(e)).first;
   }
 }
+
+typedef GhostPostResponse = ({PaginationInfo paginationInfo, List<GhostPost> posts});
 
 @JsonSerializable()
 class PaginationInfo {
@@ -108,8 +108,7 @@ class PaginationInfo {
     return 'PaginationInfo(limit: $limit, pages: $pages, total: $total, currentPage: $page,  next: $next, prev: $prev)';
   }
 
-  factory PaginationInfo.fromJson(Map<String, dynamic> json) =>
-      _$PaginationInfoFromJson(json);
+  factory PaginationInfo.fromJson(Map<String, dynamic> json) => _$PaginationInfoFromJson(json);
 
   Map<String, dynamic> toJson() => _$PaginationInfoToJson(this);
 }
@@ -196,8 +195,7 @@ class GhostPost {
     this.featureImageCaption,
   });
 
-  factory GhostPost.fromJson(Map<String, dynamic> json) =>
-      _$GhostPostFromJson(json);
+  factory GhostPost.fromJson(Map<String, dynamic> json) => _$GhostPostFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
 }

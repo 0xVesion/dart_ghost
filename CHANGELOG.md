@@ -1,4 +1,4 @@
-## 2.0.5
+## 2.1.0
 
 - Added new GhostPost browse functionality to get PaginationInfo from meta data
 - Added types.dart to store new types
