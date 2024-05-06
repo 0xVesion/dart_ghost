@@ -30,10 +30,7 @@ class GhostContentAPI {
       return '$value';
     };
 
-    final paramsString = params.entries
-        .where((e) => e.value != null)
-        .map((e) => '${e.key}=${valueToString(e.value)}')
-        .join('&');
+    final paramsString = params.entries.where((e) => e.value != null).map((e) => '${e.key}=${valueToString(e.value)}').join('&');
 
     final uri = '${url}/ghost/api/${version}/content${path}?$paramsString';
 
@@ -60,10 +57,7 @@ List<T> _map<T>(
   String name,
   T Function(Map<String, dynamic>) map,
 ) =>
-    (json[name] as List<dynamic>)
-        .cast<Map<String, dynamic>>()
-        .map(map)
-        .toList();
+    (json[name] as List<dynamic>).cast<Map<String, dynamic>>().map(map).toList();
 
 String _idOrSlugPath(String? id, String? slug) {
   if (id != null && slug != null) throw Error();

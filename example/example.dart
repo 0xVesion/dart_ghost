@@ -11,12 +11,22 @@ Future<void> main() async {
     version: 'v3',
   );
 
+  print("Browse Ghost Posts");
   final posts = await api.posts.browse(
     limit: 5,
     include: ['tags', 'authors'],
   );
+  print('Found ${posts.length} posts:');
+  for (int idx = 0; idx < posts.length; idx++) {
+    print('${idx + 1}. ${posts[idx].title}');
+  }
 
-  for (final post in posts) {
-    print(post.title);
+  print("\nBrowse Ghost Posts with Pagination Info");
+  final postsWithPagination =
+      await api.posts.browseWithPaginationInfo(limit: 5);
+  print(postsWithPagination.paginationInfo);
+  print('Found ${postsWithPagination.posts.length} posts:');
+  for (int idx = 0; idx < postsWithPagination.posts.length; idx++) {
+    print('${idx + 1}. ${postsWithPagination.posts[idx].title}');
   }
 }

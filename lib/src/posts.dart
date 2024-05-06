@@ -5,9 +5,11 @@ class _PostsApi {
 
   _PostsApi(this._api);
 
+  /// Browse posts without pagination
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   /// [filter] can only be used if no [filters] are provided
+  /// Returns a list of list of [GhostPost]
   Future<List<GhostPost>> browse({
     int? page,
     int? limit,
@@ -31,6 +33,37 @@ class _PostsApi {
     return _map(json, 'posts', (e) => GhostPost.fromJson(e));
   }
 
+  /// Browse posts with pagination info
+  /// [formats] can be 'html' and 'plaintext'
+  /// [include] can be 'authors' and 'tags'
+  /// [filter] can only be used if no [filters] are provided
+  /// Returns a [GhostPostResponse] with a list of posts and pagination info
+  Future<GhostPostResponse> browseWithPaginationInfo({
+    int? page,
+    int? limit,
+    String? order,
+    List<String>? include,
+    List<String>? fields,
+    List<String>? formats,
+    List<String>? filters,
+    String? filter,
+  }) async {
+    final json = await _api.send('/posts', <String, dynamic>{
+      'page': page,
+      'limit': limit,
+      'order': order,
+      'include': include,
+      'fields': fields,
+      'formats': formats,
+      'filter': filters ?? filter,
+    });
+
+    final posts = _map(json, 'posts', GhostPost.fromJson);
+    final pagination = PaginationInfo.fromJson(json['meta']['pagination'] as Map<String, dynamic>);
+
+    return (paginationInfo: pagination, posts: posts);
+  }
+
   /// [formats] can be 'html' and 'plaintext'
   /// [include] can be 'authors' and 'tags'
   Future<GhostPost> read({
@@ -40,8 +73,7 @@ class _PostsApi {
     List<String>? include,
     List<String>? fields,
   }) async {
-    final json =
-        await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
+    final json = await _api.send('/posts/${_idOrSlugPath(id, slug)}', <String, dynamic>{
       'formats': formats,
       'include': include,
       'fields': fields,
@@ -49,6 +81,36 @@ class _PostsApi {
 
     return _map(json, 'posts', (e) => GhostPost.fromJson(e)).first;
   }
+}
+
+typedef GhostPostResponse = ({PaginationInfo paginationInfo, List<GhostPost> posts});
+
+@JsonSerializable()
+class PaginationInfo {
+  final int? page;
+  final int? limit;
+  final int? pages;
+  final int? total;
+  final int? next;
+  final int? prev;
+
+  PaginationInfo({
+    required this.page,
+    required this.limit,
+    required this.pages,
+    required this.total,
+    required this.next,
+    required this.prev,
+  });
+
+  @override
+  toString() {
+    return 'PaginationInfo(limit: $limit, pages: $pages, total: $total, currentPage: $page,  next: $next, prev: $prev)';
+  }
+
+  factory PaginationInfo.fromJson(Map<String, dynamic> json) => _$PaginationInfoFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PaginationInfoToJson(this);
 }
 
 @JsonSerializable()
@@ -133,8 +195,7 @@ class GhostPost {
     this.featureImageCaption,
   });
 
-  factory GhostPost.fromJson(Map<String, dynamic> json) =>
-      _$GhostPostFromJson(json);
+  factory GhostPost.fromJson(Map<String, dynamic> json) => _$GhostPostFromJson(json);
 
   Map<String, dynamic> toJson() => _$GhostPostToJson(this);
 }
